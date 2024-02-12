@@ -159,7 +159,7 @@ tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 tensorflow @ https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
 tensorflow-estimator==2.11.0
-tensorflow-macos==2.11.0
+tensorflow-macos
 tensorflow-metal==0.7.1
 termcolor==2.2.0
 terminado==0.17.1
