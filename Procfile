@@ -1,1 +1,1 @@
-web: gunicorn kaizntree.wsgi --log-file -
+web: gunicorn Kaizntree.wsgi --log-file -
