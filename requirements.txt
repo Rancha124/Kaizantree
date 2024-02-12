@@ -26,8 +26,10 @@ debugpy==1.6.6
 decorator==5.1.1
 defusedxml==0.7.1
 distlib==0.3.6
+dj-database-url==2.1.0
 Django==5.0.2
 django-cors-headers==4.3.1
+django-on-heroku==1.1.2
 djangorestframework==3.14.0
 docopt==0.6.2
 et-xmlfile==1.1.0
@@ -152,12 +154,12 @@ sqlparse==0.4.4
 stack-data==0.6.2
 sympy==1.12
 tabulate==0.9.0
-tensorboard
-tensorboard-data-server
-tensorboard-plugin-wit
+tensorboard==1.8.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
 tensorflow @ https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
 tensorflow-estimator==2.11.0
-tensorflow-macos
+tensorflow-macos==2.11.0
 tensorflow-metal==0.7.1
 termcolor==2.2.0
 terminado==0.17.1
@@ -180,6 +182,7 @@ webdriver-manager==4.0.1
 webencodings==0.5.1
 websocket-client==1.5.1
 Werkzeug==2.2.3
+whitenoise==6.6.0
 widgetsnbextension==4.0.6
 wrapt==1.15.0
 wsproto==1.2.0
