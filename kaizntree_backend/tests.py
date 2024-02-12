@@ -26,6 +26,8 @@ class APITests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
+        self.base_url = reverse('item-list') 
+
 
     def test_item_list(self):
         self.client.force_authenticate(user=self.user)
@@ -106,3 +108,24 @@ class APITests(TestCase):
         # Check that the response includes the initial item but not the `old_item`
         self.assertEqual(len(response.data), 1)  # Assuming the initial setup had 1 item
         self.assertNotIn(old_item.id, [item['id'] for item in response.data])
+    
+    def test_protected_routes(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+
+        response = self.client.get(self.base_url)
+        self.assertEqual(response.status_code, 200, f"Expected 200 OK response for authorized access, got {response.status_code}")
+
+        search_query_url = f"{self.base_url}?search=test"
+        response = self.client.get(search_query_url)
+        self.assertEqual(response.status_code, 200, f"Expected 200 OK response for authorized access with search query, got {response.status_code}")
+
+    def test_access_protected_route_without_authorization(self):
+        # Clear any existing authentication credentials
+        self.client.credentials()
+
+        # Attempt to access a protected endpoint without authorization
+        response = self.client.get(self.base_url)
+        self.assertEqual(response.status_code, 401, "Access without authorization should result in 401 Unauthorized")
+
+        response = self.client.post(self.base_url, {'name': 'Unauthorized Item', 'sku': 'SKU999', 'category': 1, 'stock_status': 100, 'available_stock': 50})
+        self.assertEqual(response.status_code, 401, "POST without authorization should result in 401 Unauthorized")
